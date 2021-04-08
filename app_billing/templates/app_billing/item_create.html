@@ -1,0 +1,30 @@
+{% extends 'app_billing/admin_base.html' %}
+{% block body_block %}
+<div class="row">
+    <div class="col"></div>
+        <div class="col-lg-4">
+                <form method="post">
+                    {%csrf_token%}
+                    {{form.as_p}}
+                    <input type="submit" class="btn btn-primary" value="Add Product">
+                </form>
+
+                <table class="table">
+                        <tr>
+                            <td>Id</td>
+                            <td>Items</td>
+                        </tr>
+                       {% for item in items %}
+                        <tr>
+                          <td>{{ item.id}}</td>
+                          <td>{{ item.item_name }}</td>
+                          <td><a href="{% url 'itemdelete' item.id %}"> Delete </a> </td>
+                        </tr>
+                        {% endfor %}
+                </table>
+        </div>
+    <div class="col"></div>
+</div>
+{% endblock %}
+
+

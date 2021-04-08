@@ -1,0 +1,14 @@
+{% extends 'app_billing/admin_base.html' %}
+{% block body_block %}
+<div class="row">
+    <div class="col"></div>
+        <div class="col-lg-4">
+            <form method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input class="btn btn-primary" type="submit" value="Create Bill">
+            </form>
+        </div>
+    <div class="col"></div>
+</div>
+{%endblock%}

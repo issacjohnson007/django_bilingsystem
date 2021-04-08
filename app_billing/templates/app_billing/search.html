@@ -1,0 +1,26 @@
+{% extends 'app_billing/admin_base.html' %}
+{% block body_block %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary"  value="search">
+</form>
+<table class="table">
+        <tr>
+            <td>Bill Number</td>
+             <td>Product Name</td>
+             <td>Product Quantity</td>
+             <td>Ammount</td>
+        </tr>
+         {% for item in items %}
+        <tr>
+
+            <td>{{ item.bill_number }}</td>
+             <td>{{ item.product_name }}</td>
+             <td>{{ item.product_qty }}</td>
+             <td>{{ item.amount }}</td>
+
+        </tr>
+        {% endfor %}
+</table>
+{% endblock %}

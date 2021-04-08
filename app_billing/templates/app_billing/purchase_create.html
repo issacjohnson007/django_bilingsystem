@@ -1,0 +1,36 @@
+{% extends 'app_billing/admin_base.html' %}
+{% block body_block %}
+<div class="row">
+    <div class="col"></div>
+        <div class="col-lg-4">
+            <form method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" class='btn btn-success' value="create purchase">
+            </form>
+        </div>
+    <div class="col"></div>
+</div>
+<table class="table" >
+        <tr>
+        <td>Product</td>
+        <td>Quantity</td>
+        <td>Purchase_Price</td>
+        <td>Selling_Price</td>
+        <td>Purchase_Date</td>
+    </tr>
+    {% for product in products %}
+    <tr>
+        <td>{{ product.items }}</td>
+        <td>{{ product.purchase_qty }}</td>
+        <td>{{ product.purchase_price }}</td>
+        <td>{{ product.selling_price }}</td>
+         <td>{{ product.purchase_date }}</td>
+
+        <td><a href="{% url 'productdelete' product.id %}" class="btn btn-primary" >Delete</a> </td>
+        <td><a href="{% url 'productedit' product.id %}" class="btn btn-primary" >Edit</a> </td>
+
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

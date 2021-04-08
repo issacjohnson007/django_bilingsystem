@@ -1,0 +1,36 @@
+{% extends 'app_billing/admin_base.html' %}
+{% block body_block %}
+<div class="row">
+    <div class="col-lg-1 col-sm-1"></div>
+    <div class="col">
+                <form method="post">
+                    {{form.as_p}}
+                    {%csrf_token%}
+                    <input type="submit" class="btn btn-primary" value="Add another">
+                </form>
+    </div>
+    <div class="col" style="text-align: center;margin-top:90px">
+                <h1>Total: {{total}}</h1>
+    </div>
+</div>
+    <table class="table">
+        <tr>
+            <td>Bill Number</td>
+             <td>Product Name</td>
+             <td>Product Quantity</td>
+             <td>Ammount</td>
+        </tr>
+         {% for item in items %}
+        <tr>
+
+            <td>{{ item.bill_number }}</td>
+             <td>{{ item.product_name }}</td>
+             <td>{{ item.product_qty }}</td>
+             <td>{{ item.amount }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'generatebill' billnum %}" class="btn btn-primary" >Generate Bill</a>
+</form>
+{% endblock %}

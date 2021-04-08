@@ -1,0 +1,22 @@
+{% extends 'app_billing/admin_base.html' %}
+{% block body_block %}
+
+<h1>Todays Saled Items</h1>
+<table>
+    <tr>
+        <td>Bill Number</td>
+        <td>Products</td>
+
+    </tr>
+    {% for product in products %}
+    <tr>
+        <td>{{ product.bill_number }}</td>
+        <td>{{ product.product_name }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+{% endblock %}

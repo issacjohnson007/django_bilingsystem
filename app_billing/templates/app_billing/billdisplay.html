@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{%extends 'app_billing/admin_base.html'%}
+
+{%block body_block%}
+<form method="post">
+{%csrf_token%}
+
+<h3 >Bill Number: {{billnum}} </h3>
+<table class="table">
+    <tr>
+        <td>SL</td>
+        <td>Product Name</td>
+        <td>Product Quantity</td>
+        <td>Amount</td>
+    </tr>
+{% for line in orderlines%}
+
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{line.product_name}}</td>
+        <td>{{line.product_qty}}</td>
+        <td>{{line.amount}}</td>
+    </tr>
+{%endfor%}
+</table>
+<div class="row">
+   <div class="col-lg-9">
+            <input type="submit" value="Confirm" class="btn btn-primary">
+   </div>
+    <div class="col-lg-2" >
+        <h4 >Total:</h4>
+        <h4>{{total}}</h4>
+    </div>
+</div>
+</form>
+{%endblock%}
